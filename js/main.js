@@ -175,50 +175,78 @@ const StronaFiz = {
                 const H = canvas.height = 200;
                 ctx.clearRect(0,0,W,H);
                 
+                const q = Number(qInput.value);
                 const vVal = Number(vInput.value);
                 const bVal = Number(bInput.value);
                 const angleDeg = Number(angleInput.value);
-                const mag = Math.abs(Number(qInput.value) * vVal * bVal * Math.sin(angleDeg*Math.PI/180));
+                const mag = Math.abs(q * vVal * bVal * Math.sin(angleDeg*Math.PI/180));
                 
-                // Draw wire with current
-                ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-                ctx.lineWidth = 8;
+                // Draw wire with current - thicker, centered
+                ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                ctx.lineWidth = 10;
+                ctx.lineCap = 'round';
                 ctx.beginPath();
-                ctx.moveTo(20, H/2);
-                ctx.lineTo(W-20, H/2);
+                ctx.moveTo(40, H/2);
+                ctx.lineTo(W-40, H/2);
                 ctx.stroke();
                 
-                // Draw animated current electrons
-                const electronCount = 8;
+                // Draw animated current electrons - count depends on q
+                const electronCount = Math.max(3, Math.min(12, Math.abs(Math.round(q * 3))));
+                const speed = vVal * 0.5; // speed based on v
                 for (let i = 0; i < electronCount; i++) {
-                    const x = (20 + (phase * 2) + (W-40) * i / electronCount) % W;
-                    ctx.fillStyle = '#7dfcff';
+                    const x = (40 + (phase * speed) + (W-80) * i / electronCount) % (W-80) + 40;
+                    ctx.fillStyle = q > 0 ? '#7dfcff' : '#ff6b9d';
                     ctx.beginPath();
-                    ctx.arc(x, H/2, 3, 0, Math.PI*2);
+                    ctx.arc(x, H/2, 4, 0, Math.PI*2);
                     ctx.fill();
                 }
-                ctx.fillStyle = '#7dfcff';
-                ctx.font = '12px monospace';
-                ctx.fillText('I (current)', 25, H/2-18);
                 
-                // Draw magnetic field lines
+                // Label for current
+                ctx.fillStyle = '#7dfcff';
+                ctx.font = 'bold 11px monospace';
+                ctx.fillText('I (' + Math.abs(Math.round(q*10))/10 + ' A)', 45, 25);
+                
+                // Draw magnetic field lines - perpendicular field as crosses
                 ctx.strokeStyle = '#ffb86b';
-                ctx.lineWidth = 1.5;
-                for (let i = 0; i < 5; i++) {
-                    const xOffset = 60 + i * 80;
+                ctx.lineWidth = 2;
+                for (let i = 0; i < 6; i++) {
+                    const xOffset = 60 + i * (W-120) / 5;
+                    // Draw X pattern (field into page for positive current)
+                    const size = 12 + Math.sin(phase * 0.05) * 2;
                     ctx.beginPath();
-                    ctx.arc(xOffset, H/2, 20 + Math.sin(phase * 0.05) * 3, 0, Math.PI*2);
+                    ctx.moveTo(xOffset - size, H/2 - size);
+                    ctx.lineTo(xOffset + size, H/2 + size);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(xOffset + size, H/2 - size);
+                    ctx.lineTo(xOffset - size, H/2 + size);
                     ctx.stroke();
                 }
-                ctx.fillStyle = '#ffb86b';
-                ctx.fillText('B (field)', W-120, H/2-18);
                 
-                // Draw force magnitude bar
+                // Label for field
+                ctx.fillStyle = '#ffb86b';
+                ctx.font = 'bold 11px monospace';
+                ctx.fillText('B ⊗ (' + bVal.toFixed(1) + ' T)', W-130, 25);
+                
+                // Draw force magnitude bar at bottom - cleaner layout
+                const barHeight = 10;
+                const barY = H - 25;
+                ctx.fillStyle = 'rgba(125,92,255,0.3)';
+                ctx.fillRect(40, barY, W-80, barHeight);
                 ctx.fillStyle = '#7d5cff';
-                ctx.fillRect(20, H-35, Math.min(W-40, mag*4), 12);
+                ctx.fillRect(40, barY, Math.min(W-80, mag*3), barHeight);
+                ctx.strokeStyle = 'rgba(125,92,255,0.6)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(40, barY, W-80, barHeight);
+                
                 ctx.fillStyle = '#dbeafe';
-                ctx.font = '12px monospace';
-                ctx.fillText('F magnitude: ' + mag.toFixed(2) + ' N', 25, H-18);
+                ctx.font = '11px monospace';
+                ctx.fillText('F = ' + mag.toFixed(2) + ' N', 45, H-8);
+                
+                // Angle indicator
+                ctx.fillStyle = 'rgba(200,220,255,0.7)';
+                ctx.font = '10px monospace';
+                ctx.fillText('θ = ' + angleDeg + '°', W-90, H-8);
                 
                 phase += 1;
             };
