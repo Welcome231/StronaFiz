@@ -51,13 +51,13 @@ const StronaFiz = {
                 category: 'Artykuł'
             },
             {
-                title: 'Lorentz force',
+                title: 'Siła Lorentza',
                 subtitle: 'Relacja między ładunkiem, prędkością i polem B',
                 link: 'electromagnetism.html#lorentz',
                 category: 'Podtemat'
             },
             {
-                title: 'Magnetic field geometry',
+                title: 'Geometria pola magnetycznego',
                 subtitle: 'Kształt pola wokół prądu i ładunku w ruchu',
                 link: 'electromagnetism.html#field-geometry',
                 category: 'Podtemat'
@@ -69,7 +69,7 @@ const StronaFiz = {
                 category: 'Podtemat'
             },
             {
-                title: 'Ampère and Biot-Savart',
+                title: 'Prawo Ampère’a',
                 subtitle: 'Jak prąd buduje pole magnetyczne',
                 link: 'electromagnetism.html#ampere',
                 category: 'Podtemat'
