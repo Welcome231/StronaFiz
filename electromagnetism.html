@@ -5,189 +5,298 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elektromagnetyzm | StronaFiz</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="article-page">
     <header>
         <nav class="navbar">
             <div class="container navbar-inner">
                 <a class="logo" href="index.html">StronaFiz</a>
-                <ul class="nav-links">
-                    <li><a href="index.html#home">Start</a></li>
-                    <li><a href="#basics">Podstawy</a></li>
-                    <li><a href="#intermediate">Średnio zaawansowane</a></li>
-                    <li><a href="#full-picture">Pełny obraz</a></li>
-                    <li><a href="#simulation">Symulacja</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero" style="padding: 70px 0 60px;">
-            <div class="container hero-content">
-                <small class="eyebrow">Artykuł</small>
-                <h1>Elektromagnetyzm: od sił do pełnej geometrii pola</h1>
-                <p>Uczysz się z pytaniami, nie z nadmiarem tekstu. Zaczniemy od najprostszych reguł, a dalej połączymy je w jeden elegancki system, który pozwoli zrozumieć każde pole.</p>
-                <div class="hero-actions">
-                    <a class="cta-secondary" href="#basics">Rozpocznij od podstaw</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="search-panel" style="padding-top: 0;">
-            <div class="container">
-                <div class="search-card">
-                    <div>
-                        <h2>Podgląd artykułu</h2>
-                        <p>Ta strona zawiera krótkie, kolejne bloki wiedzy: podstawy, techniczne wnioski i pełny obraz elektromagnetyzmu.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="basics" class="articles" style="padding-top: 1rem;">
-            <div class="container">
-                <div class="section-heading">
-                    <small>Podstawy</small>
-                    <h2>Wprowadzenie do siły i pola</h2>
-                </div>
-                <article class="article-card">
-                    <h3>1. Pole jako opis przyczyny</h3>
-                    <p>Gdy odkładamy ładunek w przestrzeń, nie pytamy jeszcze o jego ruch. Pytamy: jakie pole tworzy sam ładunek? Pole to opis tego, jak inne ładunki będą reagować w tym miejscu.</p>
-                    <div class="equation">E = F / q</div>
-                    <p>To wzór na pole elektryczne. Jeśli <strong>F</strong> to siła, a <strong>q</strong> to ładunek próbny, to <strong>E</strong> mówi: jaka siła zadziała na jednostkowy ładunek. Dzięki temu możemy oddzielić przyczynę (pole) od efektu (ruch ładunku).</p>
-                    <p>W ten sposób pole staje się narzędziem: zamiast liczyć oddziaływania między każdym ładunkiem, obliczamy najpierw pole mierzalne w punkcie, a potem widzimy, jak reaguje na niego każdy ładunek.</p>
-                </article>
-                <article class="article-card" id="lorentz">
-                    <h3>2. Siła Lorentza</h3>
-                    <p>Gdy ładunek porusza się w polu magnetycznym, pole nie zmienia jego prędkości, a jedynie kierunek ruchu. Dlatego siła Lorentza działa prostopadle do kierunku ruchu, co tworzy zakrzywioną trajektorię.</p>
-                    <div class="equation">F = q ⋅ (v × B)</div>
-                    <p>Wektorowy iloczyn krzyżowy <strong>v × B</strong> daje kierunek prostopadły do obu wektorów. To oznacza, że siła nie robi pracy na ładunku, a jedynie zmienia jego kierunek.</p>
-                    <div class="interactive-panel" id="lorentz-interactive">
-                        <div class="panel-controls">
-                            <div class="panel-control">
-                                <label for="lorentz-q">Ładunek (q)</label>
-                                <input id="lorentz-q" type="range" min="-5" max="5" step="0.1" value="1">
-                                <span class="panel-value" id="lorentz-q-output"></span>
-                            </div>
-                            <div class="panel-control">
-                                <label for="lorentz-v">Prędkość (v)</label>
-                                <input id="lorentz-v" type="range" min="0" max="20" step="0.5" value="10">
-                                <span class="panel-value" id="lorentz-v-output"></span>
-                            </div>
-                            <div class="panel-control">
-                                <label for="lorentz-b">Pole magnetyczne (B)</label>
-                                <input id="lorentz-b" type="range" min="0" max="5" step="0.1" value="1">
-                                <span class="panel-value" id="lorentz-b-output"></span>
-                            </div>
-                            <div class="panel-control">
-                                <label for="lorentz-angle">Kąt między v i B</label>
-                                <input id="lorentz-angle" type="range" min="0" max="180" step="1" value="90">
-                                <span class="panel-value" id="lorentz-angle-output"></span>
+                <main>
+                    <section class="hero" style="padding: 70px 0 60px;">
+                        <div class="container hero-content">
+                            <small class="eyebrow">Artykuł</small>
+                            <h1>Elektromagnetyzm: od sił do pełnej geometrii pola</h1>
+                            <p>W tym artykule poprowadzimy cię krok po kroku przez ideę pola, siły i równań Maxwella. Każdy blok zawiera krótką intuicję, dowód "skąd to się bierze" i ćwiczenie myślowe, które pomoże ci dojść samodzielnie do formuł — tak, byś nie tylko je pamiętał, lecz rozumiał.</p>
+                            <div class="hero-actions">
+                                <a class="cta-secondary" href="#basics">Rozpocznij od podstaw</a>
                             </div>
                         </div>
-                        <div class="panel-result">
-                            <strong>Wielkość siły Lorentza:</strong>
-                            <span id="lorentz-force"></span>
-                        </div>
-                        <p class="panel-note">Zmiana kąta pokazuje, że siła znika dla 0° i 180°, a jest największa dla 90°. Ujemny ładunek odwraca kierunek siły bez zmiany jej wielkości.</p>
-                    </div>
-                </article>
-                <article class="article-card" id="field-geometry">
-                    <h3>3. Pole magnetyczne jako orientacja</h3>
-                    <p>Magnetyczne <strong>B</strong> to nie tylko liczba. To wektor: kierunek i wielkość. Linie pola układają się w pętle, bo ∇·B = 0, co oznacza brak „początków” i „końców”.</p>
-                    <div class=\"equation\">|F| = q v B sin θ</div>
-                    <p>Gdy zmienisz kąt między <strong>v</strong> i <strong>B</strong>, zmienia się tylko część sin θ. To daje nam konkret: pole magnetyczne wpływa na ruch tylko wtedy, gdy prędkość ma komponent prostopadły do pola.</p>
-                    <p>Z tego wynika prosty wniosek: gdy ładunek porusza się wzdłuż linii pola B, nie czuje siły magnetycznej. Siła pojawia się dopiero tam, gdzie pola kryją pewien „skręt” względem ruchu.</p>
-                </article>
-            </div>
-        </section>
+                    </section>
 
-        <section id="intermediate" class="modules">
-            <div class="container">
-                <div class="section-heading">
-                    <small>Średnio zaawansowane</small>
-                    <h2>Jak prąd i pole tańczą razem</h2>
-                </div>
-                <article class="article-card" id="ampere">
-                    <h3>4. Prąd jako źródło pola</h3>
-                    <p>Ładunek w ruchu tworzy pole magnetyczne. To nie jest dodatek: w elektromagnetyzmie pole magnetyczne i prąd są nierozłączne. Pojedynczy przewodnik z prądem otoczony jest krążącymi liniami B.</p>
-                    <p>Prawo Ampère'a mówi, że całka po zamkniętej linii pola jest proporcjonalna do prądu, który ta linia otacza.</p>
-                    <div class="equation">∮ B · dl = μ<sub>0</sub> I</div>
-                    <p>Prawo to mówi, że całka wokół zamkniętej ścieżki jest proporcjonalna do prądu otoczonego tą ścieżką. Jeżeli obwód zawiera prąd, pojawia się pole magnetyczne krążące wokół niego.</p>
-                    <p>Przy prostym przewodniku o prądzie <strong>I</strong> linie pola tworzą okręgi wokół przewodnika. Jeśli zwiększasz natężenie prądu, te linie stają się silniejsze i gęściej ułożone wokół przewodnika.</p>
-                    <p>To połączenie prądu z polem magnetycznym jest jednym z fundamentów urządzeń takich jak elektromagnesy, silniki i transformatory.</p>
-                </article>
-                <article class="article-card">
-                    <h3>5. Wzór Lorentza i składowe siły</h3>
-                    <p>Gdy przesuniesz ładunek w przestrzeni, zmienia się jego relacja do składowych pola. Wartość siły możesz odczytać w prosty sposób, rozkładając kierunki.</p>
-                    <div class="equation">F<sub>x</sub> = q (v<sub>y</sub> B<sub>z</sub> - v<sub>z</sub> B<sub>y</sub>)</div>
-                    <p>Każda składowa siły zależy tylko od pozostałych dwóch składowych prędkości i pola. To znak, że magnetyzm to nie działa w jednym kierunku, lecz w przestrzennej rotacji.</p>
-                </article>
-                <article class="module-card placeholder" id="simulation">
-                    <span class="module-tag">Plan</span>
-                    <h3>Symulacja wektorów pola</h3>
-                    <p>W tym miejscu pojawi się interaktywny moduł. Użytkownik będzie mógł przesuwać ładunek, zmieniać prędkość i obserwować zmieniające się wektory B.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="full-picture" class="articles">
-            <div class="container">
-                <div class="section-heading">
-                    <small>Pełny obraz</small>
-                    <h2>Jak Maxwell spina wszystko w jedność</h2>
-                </div>
-                <article class="article-card">
-                    <h3>6. Cztery równania, jeden system</h3>
-                    <p>Każde równanie Maxwella to inny punkt widzenia na to samo pole. Jedno mówi, że ładunki tworzą pole elektryczne, inne że zmienne pole elektryczne tworzy pole magnetyczne.</p>
-                    <div class="equation">∇·E = ρ / ε₀</div>
-                    <div class="equation">∇·B = 0</div>
-                    <div class="equation">∇×E = -∂B / ∂t</div>
-                    <div class="equation">∇×B = μ₀ J + μ₀ ε₀ ∂E / ∂t</div>
-                    <p>Skoro pole magnetyczne nie ma źródeł (∇·B = 0), musi być zamkniętą strukturą. To dlatego linie B tworzą zawsze pętle, a pole elektryczne zaczyna się i kończy w ładunkach.</p>
-                </article>
-                <article class="article-card" id="waves">
-                    <h3>7. Pełna akcja: fala elektromagnetyczna</h3>
-                    <p>W elektromagnetyzmie para równań <strong>∇×E = -∂B/∂t</strong> i <strong>∇×B = μ₀ J + μ₀ ε₀ ∂E/∂t</strong> mówi, że zmienna elektryczność wywołuje zmienne magnetyzm i odwrotnie. To przekłada się na falę, która sama napędza swoją zmianę.</p>
-                    <div class="equation">∂²E / ∂t² = c² ∇²E</div>
-                    <p>Druga pochodna czasowa mówi, jak szybko zmienia się tempo zmiany pola. Druga pochodna przestrzenna opisuje, jak pole różni się między punktami.</p>
-                    <p>To równanie falowe mówi, że przyspieszenie zmiany pola jest proporcjonalne do krzywizny pola w przestrzeni. W elektromagnetyzmie stała <strong>c</strong> to prędkość światła, a jej wartość pochodzi z magnetyzmu i elektryczności: <strong>c = 1 / √(μ₀ ε₀)</strong>.</p>
-                    <div class="interactive-panel" id="wave-interactive">
-                        <div class="panel-controls">
-                            <div class="panel-control">
-                                <label for="wave-lambda">Długość fali (λ)</label>
-                                <input id="wave-lambda" type="range" min="0.1" max="5" step="0.1" value="1">
-                                <span class="panel-value" id="wave-lambda-output"></span>
+                    <section id="basics" class="articles" style="padding-top: 1rem;">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Podstawy</small>
+                                <h2>1 — Pole jako opis przyczyny</h2>
                             </div>
-                            <div class="panel-control">
-                                <label for="wave-frequency">Częstotliwość (f)</label>
-                                <input id="wave-frequency" type="range" min="0.5" max="20" step="0.5" value="3">
-                                <span class="panel-value" id="wave-frequency-output"></span>
-                            </div>
+                            <article class="article-card">
+                                <h3>Pole i jego rola</h3>
+                                    <p>
+                                        Pole to podstawowe pojęcie, które pozwala przenieść skomplikowane obliczenia oddziaływań na lokalny opis przestrzeni. Wyobraź sobie, że masz duży zbiór ładunków — policzenie sił między wszystkimi parami jest kosztowne. Zamiast tego definiujemy w każdym punkcie wektor pola elektrycznego $\mathbf{E}$ mówiący, jaka siła zadziała na jednostkowy ładunek próbny. Dzięki temu obliczenia stają się lokalne i skalowalne.
+                                    </p>
+                                    <p>
+                                        Formalnie: jeśli w danym punkcie działa siła $\mathbf{F}$ na próbny ładunek $q$, definiujemy
+                                    </p>
+                                    <div class="equation">$\displaystyle \mathbf{E}=\dfrac{\mathbf{F}}{q}$</div>
+                                    <p>
+                                        To równanie jest zarazem definicją i narzędziem. Jeżeli znamy rozkład pola, to dla dowolnego ładunku w tym punkcie jego siła to $\mathbf{F}=q\mathbf{E}$. Ten sposób myślenia prowadzi do dwóch praktycznych konsekwencji: superpozycji pól (pole wypadkowe jest sumą pól od każdego źródła) oraz łatwego przenoszenia obliczeń na różne konfiguracje źródeł.
+                                    </p>
+                                    <p>
+                                    <div class="callout">
+                                        <strong>Ćwiczenie:</strong> rozważ punktowy ładunek +Q. Wyprowadź pole w odległości $r$ używając symetrii sferycznej i zachowania strumienia elektrycznego przez powierzchnię sferyczną. Zauważysz, że intensywność pola maleje jak $1/r^2$, co wynika z rozkładu strumienia przez powierzchnię rosnącą jak $r^2$.
+                                    </div>
+                                    <p>
+                                        W tej sekcji zobaczymy też graficzne animacje: linię pola punktowego ładunku oraz superpozycję dla dwóch ładunków przeciwnego znaku (dipol). Zobaczysz, jak zmienia się ułożenie linii i co to oznacza dla trajektorii ładunków próbnych.
+                                    </p>
+                            </article>
                         </div>
-                        <div class="panel-result">
-                            <strong>Prędkość fali:</strong>
-                            <span id="wave-speed"></span>
-                        </div>
-                        <p class="panel-note">Wzór <strong>v = λ f</strong> pokazuje, że fala jest ruchomą strukturą zmiany. Druga pochodna przestrzenna wyznacza, jak zmiana w jednym punkcie wpływa na sąsiednie punkty.</p>
-                    </div>
-                </article>
-                <article class="article-card">
-                    <h3>8. Kiedy pełny obraz ma sens</h3>
-                    <p>Pełny obraz elektromagnetyzmu to nie lista faktów. To model, w którym każdą siłę, każdy prąd i każde przyspieszenie da się odczytać jako lokalny stan pola i jego zmian.</p>
-                    <p>Najpierw siła, potem źródła, potem czas. Wtedy pytanie „dlaczego to działa” przestaje być abstrakcją.</p>
-                </article>
-            </div>
-        </section>
-    </main>
+                    </section>
 
-    <footer>
-        <div class="container footer-inner">
-            <p>StronaFiz — Elektromagnetyzm</p>
-            <a href="index.html" class="cta-secondary">Powrót</a>
-        </div>
-    </footer>
-    <script src="js/main.js"></script>
-</body>
-</html>
+                    <section id="lorentz" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Podstawy</small>
+                                <h2>2 — Siła Lorentza (intuicja i ćwiczenia)</h2>
+                            </div>
+                            <article class="article-card" id="lorentz-card">
+                                <h3>Siła Lorentza: kierunek, wielkość, znaczenie</h3>
+                                <p>
+                                    Siła Lorentza to podstawowe narzędzie opisujące, jak cząstka naładowana porusza się w polu magnetycznym. W odróżnieniu od siły elektrycznej, magnetyczna zależy od prędkości ładunku — to oznacza, że magnetyzm wpływa na kierunek ruchu, nie na energię kinetyczną bezwzględnie (praca wykonana przez pole magnetyczne wynosi zero, gdyż siła jest prostopadła do prędkości). Równanie zapisujemy jako:
+                                    <br>
+                                    <div class="equation">$\displaystyle \mathbf{F}=q\,(\mathbf{v}\times\mathbf{B})$</div>
+                                </p>
+                                <p>
+                                    Iloczyn wektorowy $\mathbf{v}\times\mathbf{B}$ ma dwie cechy, które trzeba zapamiętać: (1) wynikiem jest wektor prostopadły do obu wejściowych wektorów, (2) jego długość to iloczyn długości wektorów i sinus kąta pomiędzy nimi. Z tego wynika wzór na wartość siły: $|F|=|q|\,v\,B\,\sin\theta$, gdzie $\theta$ to kąt między wektorem prędkości a polem magnetycznym.
+                                </p>
+                                <div class="callout">
+                                    <strong>Ćwiczenie:</strong> narysuj trzy osie (X,Y,Z). Niech prędkość będzie wzdłuż osi X, a pole magnetyczne wzdłuż osi Z. Zastosuj regułę prawej dłoni (dla ładunku dodatniego) i znajdziesz, że siła wskazuje w osi Y. Teraz wyobraź sobie ładunek ujemny — kierunek siły odwraca się. Spróbuj przewidzieć, jakie będzie zachowanie cząstki w jednorodnym polu, jeśli jej prędkość początkowo jest prostopadła do $\mathbf{B}$.
+                                </div>
+                                <p>
+                                    W tej części rozbijemy także siłę na składowe kartezjańskie, przeanalizujemy przypadek ruchu po okręgu (ciągłe odchylenie kierunku) i pokażemy, jak promień zakrzywienia R zależy od prędkości, ładunku i pola: $R=\dfrac{m v}{|q|B}$. To połączenie dynamiki i geometrii wyjaśnia działanie cyklotronów i innych urządzeń przyspieszających cząstki.
+                                </p>
+                                <p>
+                                    Animacja w panelu obrazuje geometryczny sens iloczynu krzyżowego: wektor prędkości, składowa prostopadła do pola i wynikowa siła. Dzięki temu użytkownik może nie tylko zobaczyć wartość siły, ale też zrozumieć, skąd ona pochodzi i jakie konsekwencje ma dla trajektorii.
+                                </p>
+                                <p>
+                                    Ćwiczenie: weź ołówek i narysuj wektor prędkości w poziomie, a wektor pola magnetycznego wychodzący z kartki. Użyj reguły prawej dłoni, aby znaleźć kierunek siły dla dodatniego ładunku. Jeśli ładunek jest ujemny — kierunek się odwraca. To proste ćwiczenie sprawi, że iloczyn wektorowy stanie się intuicyjny.
+                                </p>
+                                <div class="interactive-panel" id="lorentz-interactive">
+                                    <div class="panel-controls">
+                                        <div class="panel-control">
+                                            <label for="lorentz-q">Ładunek (q)</label>
+                                            <input id="lorentz-q" type="range" min="-5" max="5" step="0.1" value="1">
+                                            <span class="panel-value" id="lorentz-q-output"></span>
+                                        </div>
+                                        <div class="panel-control">
+                                            <label for="lorentz-v">Prędkość (v)</label>
+                                            <input id="lorentz-v" type="range" min="0" max="20" step="0.5" value="10">
+                                            <span class="panel-value" id="lorentz-v-output"></span>
+                                        </div>
+                                        <div class="panel-control">
+                                            <label for="lorentz-b">Pole magnetyczne (B)</label>
+                                            <input id="lorentz-b" type="range" min="0" max="5" step="0.1" value="1">
+                                            <span class="panel-value" id="lorentz-b-output"></span>
+                                        </div>
+                                        <div class="panel-control">
+                                            <label for="lorentz-angle">Kąt między v i B</label>
+                                            <input id="lorentz-angle" type="range" min="0" max="180" step="1" value="90">
+                                            <span class="panel-value" id="lorentz-angle-output"></span>
+                                        </div>
+                                    </div>
+                                    <div class="panel-result">
+                                        <strong>Wielkość siły Lorentza:</strong>
+                                        <span id="lorentz-force"></span>
+                                    </div>
+                                    <canvas id="lorentz-canvas" width="420" height="200"></canvas>
+                                    <p class="panel-note">Zmień suwak kąta i obserwuj, jak maleje siła gdy kąt zbliża się do 0° lub 180°, oraz jak animacja obrazuje geometryczny sens iloczynu krzyżowego.</p>
+                                </div>
+                                <p>
+                                    W dalszej części tego bloku prowadzimy przez analizę składowych (rozpisanie iloczynu krzyżowego na składowe kartezjańskie), omówimy przypadek ruchu w polu jednorodnym (okrągła trajektoria dla stałego B) i pokażemy, jak energia kinetyczna zachowuje się przy działaniu pola magnetycznego (polе nie wykonuje pracy, dlatego prędkość bezwzględna nie zmienia się — tylko kierunek).
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="field-geometry" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Podstawy → Geometria</small>
+                                <h2>3 — Pole magnetyczne: struktura i reguły</h2>
+                            </div>
+                            <article class="article-card">
+                                <h3>Linie pola i reguła dywergencji</h3>
+                                <p>
+                                    Wektor pola magnetycznego $\mathbf{B}$ jest narzędziem geometrycznym: kierunek i gęstość linii pola przekazują informację o kierunku i sile oddziaływania magnetycznego. Najważniejsza formalna własność to zerowa dywergencja:
+                                </p>
+                                <div class="equation">$\nabla\cdot\mathbf{B}=0$</div>
+                                <p>
+                                    Ten zapis oznacza, że pole magnetyczne nie ma „źródeł” ani „sanki” — linie pola nie zaczynają się i nie kończą, tworzą zamknięte pętle. To konsekwencja braku obserwowanych monopoli magnetycznych w zwykłej materii. W praktyce oznacza to, że każdy obszar, w którym linie pola wchodzą, jest równoważony przez obszar, w którym z niego wychodzą — to struktura pętli.
+                                </p>
+                                <p>
+                                    Ćwiczenie: narysuj przewodnik pionowy niosący prąd do góry. Narysuj jakościowo linie pola jako okręgi koncentryczne wokół przewodnika. Teraz zwiększ natężenie prądu — zobaczysz, że linie stają się gęstsze (większa gęstość linii to większe pole). To prosta heurystyka, która pomaga wyobrazić siłę w różnych punktach przestrzeni.
+                                </p>
+                                <p>
+                                    Inną praktyczną regułą jest prawo Ampère’a i prawo Biot‑Savarta, które pozwalają obliczać pole wytwarzane przez dany rozkład prądu. Dla długiego, prostego przewodnika o prądzie $I$ wynik to $B\propto I/r$ (dokładnie: $B=\dfrac{\mu_0 I}{2\pi r}$), co znów wynika z symetrii i zachowania strumienia w przekroju kołowym.
+                                </p>
+                                <p>
+                                    Gdy analizujemy siłę działającą na poruszający się ładunek, używamy wzoru
+                                </p>
+                                <div class="equation">$\lvert F\rvert = |q|\,v\,B\,\sin\theta$</div>
+                                <p>
+                                    Wzór ten łączy geometrię (kąt między wektorami), wielkości (wartości wektorów) i znak ładunku. Zrozumienie tej zależności pomaga w analizie trajektorii w polach złożonych lub przy projektowaniu eksperymentów, w których sterujemy kierunkiem i wielkością pola.
+                                </p>
+                                <p>
+                                    Na końcu tego bloku pokażemy animację: zmieniając kąt i prędkość zobaczysz, jak zmienia się tor cząstki. Zobaczysz też, dlaczego ruch wzdłuż linii B nie powoduje siły magnetycznej — to po prostu geometria wektorów.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="ampere" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Średnio zaawansowane</small>
+                                <h2>4 — Prąd jako źródło pola (Ampère i Biot‑Savart)</h2>
+                            </div>
+                            <article class="article-card" id="ampere-card">
+                                <h3>Jak ruch ładunków tworzy B</h3>
+                                <p>
+                                    Prąd elektryczny to uporządkowany ruch ładunków — to naturalne źródło pola magnetycznego. Prawo Ampère'a, zapisane w formie całkowej, łączy obieg pola z prądem, który ten obieg otacza:
+                                </p>
+                                <div class="equation">$\displaystyle \oint \mathbf{B}\cdot d\mathbf{l} = \mu_0 I$</div>
+                                <p>
+                                    Intuicyjnie: weź dowolną zamkniętą krzywą — całka po tej krzywej z projekcji wektora $\mathbf{B}$ mówi, ile prądu znajduje się „wewnątrz” tej krzywej. Dla symetrycznych przypadków (np. długi, prosty przewodnik) możemy z tej zasady wyprowadzić praktyczne wzory: $B=\dfrac{\mu_0 I}{2\pi r}$.
+                                </p>
+                                <p>
+                                    Biot‑Savart to bardziej ogólne podejście: przyjmując element prądu $d\mathbf{l}$, sumujemy wkłady od wszystkich elementów przewodu, aby otrzymać pole w punkcie obserwacji. Wersja elementarna tego prawa brzmi:
+                                </p>
+                                <div class="equation">$d\mathbf{B}=\dfrac{\mu_0}{4\pi}\dfrac{I\,d\mathbf{l}\times \hat{\mathbf{r}}}{r^2}$</div>
+                                <p>
+                                    To równanie pokazuje, że wkład z elementu prądu jest proporcjonalny do prądu i maleje z kwadratem odległości, a także zależy od geometrii (iloczyn wektorowy z kierunkiem obserwacji $\hat{\mathbf{r}}$). Ten sposób myślenia jest szczególnie użyteczny przy obliczaniu pola dla zwojów, pętli czy złożonych kształtów przewodników.
+                                </p>
+                                <p>
+                                    Praktyczne ćwiczenie: policz pole w środku pojedynczej pętli prądu. Użyj symetrii — każdy element pętli wnosi wkład, który sumuje się do pola w osi pętli. Wynik pokazuje, że pętla wytwarza pole zbliżone do dipola na odległościach znacznie większych niż jej rozmiar.
+                                </p>
+                                <p>
+                                    Zastosowania: elektromagnesy, cewki i transformatory opierają się na kontrolowaniu rozkładu prądu i geometrii uzwojeń, by uzyskać żądane pole. W inżynierii ważne jest, by rozumieć skalowanie: jak zwiększenie liczby zwojów, natężenia prądu czy kształtu uzwojenia wpływa na pole w miejscu pracy urządzenia.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="components" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Średnio zaawansowane</small>
+                                <h2>5 — Składowe i rozkład siły (wzór komponentowy)</h2>
+                            </div>
+                            <article class="article-card">
+                                <h3>Rozpisanie Lorentza na składowe</h3>
+                                <p>
+                                    Pokud chcemy policzyć siłę we współrzędnych, rozpisujemy iloczyn wektorowy na składowe. Dla przykładu składowa $F_x$ ma postać:
+                                    <br>
+                                    <div class="equation">$F_x = q\, (v_y B_z - v_z B_y)$</div>
+                                </p>
+                                <p>
+                                    Ta rozpiska uczy nas, że każda składowa siły zależy od dwóch pozostałych składowych prędkości i pola — to cecha rotacyjna magnetyzmu. W praktyce przydaje się to przy obliczaniu trajektorii w polach niejednorodnych albo przy analizie ruchu w trzech wymiarach.
+                                </p>
+                                <p>
+                                    W tej sekcji przeprowadzimy przykłady obliczeniowe: zaczynając od prostego przypadku (ruch w płaszczyźnie XY z polem wzdłuż Z) po bardziej złożone przypadki złożenia składowych. Pokażemy też, jak przepisać równania do postaci numerycznej, by zasymulować trajektorię cząstki w polu zmiennym.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="full-picture" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Pełny obraz</small>
+                                <h2>6 — Równania Maxwella: spójność i konsekwencje</h2>
+                            </div>
+                            <article class="article-card">
+                                <h3>Jedność opisów — cztery równania</h3>
+                                <p>
+                                    Równania Maxwella to zbiór czterech równań, które łączą pole elektryczne i magnetyczne z ich źródłami (ładunkami i prądami) oraz z ich dynamiką. W zapisie różniczkowym wyglądają następująco:
+                                    <br>
+                                    <div class="equation">$\nabla \cdot \mathbf{E} = \dfrac{\rho}{\varepsilon_0}$</div>
+                                    <div class="equation">$\nabla \cdot \mathbf{B} = 0$</div>
+                                    <div class="equation">$\nabla \times \mathbf{E} = -\dfrac{\partial \mathbf{B}}{\partial t}$</div>
+                                    <div class="equation">$\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \dfrac{\partial \mathbf{E}}{\partial t}$</div>
+                                </p>
+                                <p>
+                                    Każde z tych równań można interpretować: pierwszy mówi, że pole elektryczne ma źródła w ładunkach; drugi, że pole magnetyczne nie ma monopoli; trzeci i czwarty łączą zmiany w czasie jednego pola z obrotem drugiego, co jest mechanizmem generacji fal elektromagnetycznych.
+                                </p>
+                                <p>
+                                    W tej części pokażemy, jak od tych równań otrzymać równanie falowe dla pola elektrycznego i jak interpretować stałą $c$ jako prędkość rozchodzenia się zaburzeń (światła) w próżni: $c = 1/\sqrt{\mu_0 \varepsilon_0}$. Zapraszamy do śledzenia krótkiego dowodu krok po kroku.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="waves" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Pełny obraz</small>
+                                <h2>7 — Fale elektromagnetyczne i mechanizm propagacji</h2>
+                            </div>
+                            <article class="article-card" id="waves-card">
+                                <h3>Jak E i B napędzają siebie nawzajem</h3>
+                                <p>
+                                    Z równań Maxwella wynika, że zmienne pole elektryczne wywołuje rotację pola magnetycznego, a zmienne pole magnetyczne z kolei rotację pola elektrycznego. To sprzężenie daje naturalny mechanizm, w którym zaburzenia pola przemieszczają się w postaci fali. Równanie falowe dla pola elektrycznego ma postać:
+                                    <br>
+                                    <div class="equation">$\dfrac{\partial^2 \mathbf{E}}{\partial t^2} = c^2 \nabla^2 \mathbf{E}$</div>
+                                </p>
+                                <p>
+                                    Intuicyjnie: jeśli przyspieszenie zmiany pola w czasie jest proporcjonalne do jego przestrzennej krzywizny, to zaburzenie „przenosi się” dalej — powstaje fala. Stała $c$ pochodzi z parametrów pola i ma wartość prędkości światła.
+                                </p>
+                                <div class="interactive-panel" id="wave-interactive">
+                                    <div class="panel-controls">
+                                        <div class="panel-control">
+                                            <label for="wave-lambda">Długość fali (λ)</label>
+                                            <input id="wave-lambda" type="range" min="0.1" max="5" step="0.1" value="1">
+                                            <span class="panel-value" id="wave-lambda-output"></span>
+                                        </div>
+                                        <div class="panel-control">
+                                            <label for="wave-frequency">Częstotliwość (f)</label>
+                                            <input id="wave-frequency" type="range" min="0.5" max="20" step="0.5" value="3">
+                                            <span class="panel-value" id="wave-frequency-output"></span>
+                                        </div>
+                                    </div>
+                                    <div class="panel-result">
+                                        <strong>Prędkość fali:</strong>
+                                        <span id="wave-speed"></span>
+                                    </div>
+                                    <canvas id="wave-canvas" width="640" height="140"></canvas>
+                                    <p class="panel-note">Animacja pokazuje falę sinusoidalną: zmieniając λ i f zobaczysz, jak prędkość fali $v = \lambda f$ wpływa na szybkość przesuwania się czoła fali.</p>
+                                </div>
+                                <p>
+                                    W tej sekcji przeprowadzimy analizę rozkładu energii pola (gęstość energii i strumień Poyntinga) oraz omówimy polaryzację fal. Będziemy też sugerować krótkie zadania, które poprowadzą cię krok po kroku przez odtworzenie równania falowego z równań Maxwella.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="conclusion" class="articles">
+                        <div class="container">
+                            <div class="section-heading">
+                                <small>Podsumowanie</small>
+                                <h2>8 — Kiedy pełny obraz ma sens</h2>
+                            </div>
+                            <article class="article-card">
+                                <h3>Synteza i praktyczne intuicje</h3>
+                                <p>
+                                    Pełny obraz elektromagnetyzmu to narzędzie: pozwala wyjaśnić, zaprojektować i przewidzieć zjawiska od działania prostego przewodnika po propagację fal radiowych. Po przerobieniu powyższych sekcji powinieneś czuć, że równania nie są arbitralnymi symbolami, lecz konsekwencją kilku prostych obserwacji i zasad symetrii: zachowania strumienia, relacji między polem a źródłem oraz sprzężenia czasowego pól.
+                                </p>
+                                <p>
+                                    Jako ćwiczenie końcowe spróbuj samodzielnie przeprowadzić dowód równania falowego: zacznij od równań Faradaya i Maxwella‑Ampère'a (bez źródeł), weź rotację jednego z równań i podstaw drugi, upraszczając, aż otrzymasz operator Laplace'a po prawej stronie. To zadanie świetnie utrwala powiązania między pojęciami.
+                                </p>
+                                <p>
+                                    Jeżeli chcesz, mogę teraz: 1) dopisać jeszcze więcej szczegółowych przykładów (analiza cewki, obliczenia pola solenoidu), 2) dodać interaktywne rysunki SVG dla wszystkich sekcji inspirowane stylem wizualnym 3Blue1Brown (płynne animacje), albo 3) zintegrować KaTeX z pełną składnią LaTeX i dodatkowymi trybami renderowania. Napisz, którą opcję wybierasz.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+                </main>

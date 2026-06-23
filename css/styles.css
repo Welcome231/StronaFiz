@@ -47,8 +47,12 @@ body::before {
 }
 
 .container {
-    width: min(1180px, calc(100% - 40px));
+    width: min(1320px, calc(100% - 40px));
     margin: 0 auto;
+}
+
+.article-page .container {
+    width: min(1320px, calc(100% - 40px));
 }
 
 img {
@@ -69,10 +73,10 @@ input {
 header {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 1000;
     backdrop-filter: blur(16px);
-    background: rgba(7, 12, 24, 0.9);
-    border-bottom: 1px solid rgba(91, 230, 255, 0.12);
+    background: rgba(7, 12, 24, 0.94);
+    border-bottom: 1px solid rgba(91, 230, 255, 0.16);
 }
 
 .navbar {
@@ -130,9 +134,9 @@ header {
 
 /* ===== Section Headings ===== */
 .section-heading {
-    max-width: 720px;
-    margin: 0 auto 2rem;
-    text-align: center;
+    max-width: 980px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
 }
 
 .section-heading small {
@@ -334,11 +338,11 @@ header {
     background: rgba(10, 15, 30, 0.96);
     border: 1px solid rgba(91, 230, 255, 0.12);
     border-radius: 28px;
-    padding: 2rem;
+    padding: 2.6rem 2.8rem;
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: transform 0.25s ease, border-color 0.25s ease;
-    min-height: 560px;
+    min-height: 520px;
 }
 
 body.article-page .article-card {
@@ -477,6 +481,16 @@ body.article-page .article-card {
     color: #dbeafe;
 }
 
+/* Canvas animations */
+#lorentz-canvas, #wave-canvas {
+    width: 100%;
+    max-width: 640px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+    display: block;
+}
+
 .article-card::before,
 .module-card::before {
     content: '';
@@ -491,13 +505,34 @@ body.article-page .article-card {
 .module-card h3 {
     margin-bottom: 1rem;
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+}
+
+.article-card h4 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+    font-size: 1.1rem;
+    color: #7dfcff;
+    letter-spacing: 0.02em;
 }
 
 .article-card p,
 .module-card p {
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.75;
+}
+
+.callout {
+    background: rgba(91, 230, 255, 0.08);
+    border: 1px solid rgba(91, 230, 255, 0.18);
+    border-radius: 22px;
+    padding: 1.25rem 1.4rem;
+    margin: 1.6rem 0;
+    color: #e7f7ff;
+}
+
+.callout strong {
+    color: var(--primary);
 }
 
 .article-card .article-meta {

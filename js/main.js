@@ -159,6 +159,39 @@ const StronaFiz = {
         });
 
         update();
+        // Lorentz canvas animation
+        const canvas = document.getElementById('lorentz-canvas');
+        if (canvas && canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+            const draw = () => {
+                const W = canvas.width = Math.min(640, canvas.clientWidth);
+                const H = canvas.height = 200;
+                ctx.clearRect(0,0,W,H);
+                // draw axes
+                ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+                ctx.beginPath();
+                ctx.moveTo(10,H/2); ctx.lineTo(W-10,H/2); ctx.stroke();
+                // draw velocity vector (fixed length scaled)
+                const vVal = Number(vInput.value);
+                const bVal = Number(bInput.value);
+                const angleDeg = Number(angleInput.value);
+                const vx = 120;
+                const vy = 0;
+                ctx.strokeStyle = '#7dfcff'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(80,H/2); ctx.lineTo(80+vx,H/2); ctx.stroke();
+                ctx.fillStyle = '#7dfcff'; ctx.fillText('v', 80+vx+6, H/2-6);
+                // draw B as circle dot/cross depending on sign
+                ctx.fillStyle = '#ffb86b'; ctx.font = '14px monospace';
+                ctx.fillText('B ⭑', W-120, H/2-6);
+                // draw force magnitude bar
+                const mag = Math.abs(Number(qInput.value) * vVal * bVal * Math.sin(angleDeg*Math.PI/180));
+                ctx.fillStyle = '#7d5cff'; ctx.fillRect(80, H-30, Math.min(400, mag*6), 10);
+                ctx.fillStyle = '#dbeafe'; ctx.fillText('F magnitude', 82, H-34);
+            };
+            let raf = null;
+            const tick = () => { draw(); raf = requestAnimationFrame(tick); };
+            tick();
+        }
     },
 
     setupWavePanel() {
@@ -188,6 +221,32 @@ const StronaFiz = {
         });
 
         update();
+        // Wave canvas animation
+        const wcanvas = document.getElementById('wave-canvas');
+        if (wcanvas && wcanvas.getContext) {
+            const ctx = wcanvas.getContext('2d');
+            let phase = 0;
+            const draw = () => {
+                const W = wcanvas.width = Math.min(640, wcanvas.clientWidth);
+                const H = wcanvas.height = 140;
+                ctx.clearRect(0,0,W,H);
+                const lambda = Number(lambdaInput.value);
+                const freq = Number(freqInput.value);
+                const k = 2*Math.PI / (lambda*40);
+                const omega = 2*Math.PI*freq/10;
+                ctx.strokeStyle = '#5be6ff'; ctx.lineWidth = 2;
+                ctx.beginPath();
+                for (let x=0;x<W;x++){
+                    const y = H/2 + Math.sin(k*x - phase) * 24;
+                    if (x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+                }
+                ctx.stroke();
+                phase += omega*0.03;
+            };
+            let raf2 = null;
+            const tick2 = () => { draw(); raf2 = requestAnimationFrame(tick2); };
+            tick2();
+        }
     },
 
     renderArticleCards() {
