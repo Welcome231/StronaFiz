@@ -398,6 +398,9 @@ header {
     padding: 2.6rem 2.8rem;
     box-shadow: var(--shadow);
     overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
     transition: transform 0.25s ease, border-color 0.25s ease;
     min-height: 520px;
 }

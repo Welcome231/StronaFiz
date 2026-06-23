@@ -165,34 +165,62 @@ const StronaFiz = {
         });
 
         update();
-        // Lorentz canvas animation
+        // Lorentz canvas animation - current through wire and magnetic field
         const canvas = document.getElementById('lorentz-canvas');
         if (canvas && canvas.getContext) {
             const ctx = canvas.getContext('2d');
+            let phase = 0;
             const draw = () => {
                 const W = canvas.width = Math.min(640, canvas.clientWidth);
                 const H = canvas.height = 200;
                 ctx.clearRect(0,0,W,H);
-                // draw axes
-                ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-                ctx.beginPath();
-                ctx.moveTo(10,H/2); ctx.lineTo(W-10,H/2); ctx.stroke();
-                // draw velocity vector (fixed length scaled)
+                
                 const vVal = Number(vInput.value);
                 const bVal = Number(bInput.value);
                 const angleDeg = Number(angleInput.value);
-                const vx = 120;
-                const vy = 0;
-                ctx.strokeStyle = '#7dfcff'; ctx.lineWidth = 3;
-                ctx.beginPath(); ctx.moveTo(80,H/2); ctx.lineTo(80+vx,H/2); ctx.stroke();
-                ctx.fillStyle = '#7dfcff'; ctx.fillText('v', 80+vx+6, H/2-6);
-                // draw B as circle dot/cross depending on sign
-                ctx.fillStyle = '#ffb86b'; ctx.font = '14px monospace';
-                ctx.fillText('B ⭑', W-120, H/2-6);
-                // draw force magnitude bar
                 const mag = Math.abs(Number(qInput.value) * vVal * bVal * Math.sin(angleDeg*Math.PI/180));
-                ctx.fillStyle = '#7d5cff'; ctx.fillRect(80, H-30, Math.min(400, mag*6), 10);
-                ctx.fillStyle = '#dbeafe'; ctx.fillText('F magnitude', 82, H-34);
+                
+                // Draw wire with current
+                ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                ctx.lineWidth = 8;
+                ctx.beginPath();
+                ctx.moveTo(20, H/2);
+                ctx.lineTo(W-20, H/2);
+                ctx.stroke();
+                
+                // Draw animated current electrons
+                const electronCount = 8;
+                for (let i = 0; i < electronCount; i++) {
+                    const x = (20 + (phase * 2) + (W-40) * i / electronCount) % W;
+                    ctx.fillStyle = '#7dfcff';
+                    ctx.beginPath();
+                    ctx.arc(x, H/2, 3, 0, Math.PI*2);
+                    ctx.fill();
+                }
+                ctx.fillStyle = '#7dfcff';
+                ctx.font = '12px monospace';
+                ctx.fillText('I (current)', 25, H/2-18);
+                
+                // Draw magnetic field lines
+                ctx.strokeStyle = '#ffb86b';
+                ctx.lineWidth = 1.5;
+                for (let i = 0; i < 5; i++) {
+                    const xOffset = 60 + i * 80;
+                    ctx.beginPath();
+                    ctx.arc(xOffset, H/2, 20 + Math.sin(phase * 0.05) * 3, 0, Math.PI*2);
+                    ctx.stroke();
+                }
+                ctx.fillStyle = '#ffb86b';
+                ctx.fillText('B (field)', W-120, H/2-18);
+                
+                // Draw force magnitude bar
+                ctx.fillStyle = '#7d5cff';
+                ctx.fillRect(20, H-35, Math.min(W-40, mag*4), 12);
+                ctx.fillStyle = '#dbeafe';
+                ctx.font = '12px monospace';
+                ctx.fillText('F magnitude: ' + mag.toFixed(2) + ' N', 25, H-18);
+                
+                phase += 1;
             };
             let raf = null;
             const tick = () => { draw(); raf = requestAnimationFrame(tick); };
