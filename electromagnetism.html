@@ -6,7 +6,7 @@
     <title>Elektromagnetyzm | StronaFiz</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="article-page">
     <header>
         <nav class="navbar">
             <div class="container navbar-inner">
@@ -53,22 +53,52 @@
                 </div>
                 <article class="article-card">
                     <h3>1. Pole jako opis przyczyny</h3>
-                    <p>Gdy odkładamy ładunek w przestrzeń, nie pytamy jeszcze o jego ruch. Pytamy: jakie pole zostaje tam zapisane? Pole to niewidoczny kod, który mówi innym ładunkom, jak będą przyspieszać.</p>
+                    <p>Gdy odkładamy ładunek w przestrzeń, nie pytamy jeszcze o jego ruch. Pytamy: jakie pole tworzy sam ładunek? Pole to opis tego, jak inne ładunki będą reagować w tym miejscu.</p>
                     <div class="equation">E = F / q</div>
-                    <p>To wzór na pole elektryczne: 
-                    <strong>E</strong> jest proporcjonalne do <strong>F</strong>, a odwrotnie proporcjonalne do <strong>q</strong>. Jeśli potrafisz odczytać tę zależność, potrafisz zrozumieć każde późniejsze zjawisko w elektromagnetyzmie.</p>
+                    <p>To wzór na pole elektryczne. Jeśli <strong>F</strong> to siła, a <strong>q</strong> to ładunek próbny, to <strong>E</strong> mówi: jaka siła zadziała na jednostkowy ładunek. Dzięki temu możemy oddzielić przyczynę (pole) od efektu (ruch ładunku).</p>
+                    <p>W ten sposób pole staje się narzędziem: zamiast liczyć oddziaływania między każdym ładunkiem, obliczamy najpierw pole mierzalne w punkcie, a potem widzimy, jak reaguje na niego każdy ładunek.</p>
                 </article>
                 <article class="article-card" id="lorentz">
-                    <h3>2. Siła Lorentza w pigułce</h3>
-                    <p>Dla ładunku poruszającego się w polu magnetycznym najważniejsze jest, że droga ładunku zależy od wzajemnej orientacji prędkości i pola.</p>
-                    <div class="equation">F = q (v × B)</div>
-                    <p>Gdy <strong>v</strong> jest równoległe do <strong>B</strong>, krzyżowy iloczyn wynosi zero. Gdy <strong>v</strong> jest prostopadłe, siła jest maksymalna. To mechanizm, dzięki któremu magnety "zginają" ruch ładunków.</p>
+                    <h3>2. Siła Lorentza</h3>
+                    <p>Gdy ładunek porusza się w polu magnetycznym, pole nie zmienia jego prędkości, a jedynie kierunek ruchu. Dlatego siła Lorentza działa prostopadle do kierunku ruchu, co tworzy zakrzywioną trajektorię.</p>
+                    <div class="equation">F = q ⋅ (v × B)</div>
+                    <p>Wektorowy iloczyn krzyżowy <strong>v × B</strong> daje kierunek prostopadły do obu wektorów. To oznacza, że siła nie robi pracy na ładunku, a jedynie zmienia jego kierunek.</p>
+                    <div class="interactive-panel" id="lorentz-interactive">
+                        <div class="panel-controls">
+                            <div class="panel-control">
+                                <label for="lorentz-q">Ładunek (q)</label>
+                                <input id="lorentz-q" type="range" min="-5" max="5" step="0.1" value="1">
+                                <span class="panel-value" id="lorentz-q-output"></span>
+                            </div>
+                            <div class="panel-control">
+                                <label for="lorentz-v">Prędkość (v)</label>
+                                <input id="lorentz-v" type="range" min="0" max="20" step="0.5" value="10">
+                                <span class="panel-value" id="lorentz-v-output"></span>
+                            </div>
+                            <div class="panel-control">
+                                <label for="lorentz-b">Pole magnetyczne (B)</label>
+                                <input id="lorentz-b" type="range" min="0" max="5" step="0.1" value="1">
+                                <span class="panel-value" id="lorentz-b-output"></span>
+                            </div>
+                            <div class="panel-control">
+                                <label for="lorentz-angle">Kąt między v i B</label>
+                                <input id="lorentz-angle" type="range" min="0" max="180" step="1" value="90">
+                                <span class="panel-value" id="lorentz-angle-output"></span>
+                            </div>
+                        </div>
+                        <div class="panel-result">
+                            <strong>Wielkość siły Lorentza:</strong>
+                            <span id="lorentz-force"></span>
+                        </div>
+                        <p class="panel-note">Zmiana kąta pokazuje, że siła znika dla 0° i 180°, a jest największa dla 90°. Ujemny ładunek odwraca kierunek siły bez zmiany jej wielkości.</p>
+                    </div>
                 </article>
                 <article class="article-card" id="field-geometry">
                     <h3>3. Pole magnetyczne jako orientacja</h3>
-                    <p>Magnetyczne <strong>B</strong> to nie tylko liczba. To wektor: kierunek i wielkość. W praktyce każda linia pola mówi, jak ładunek poczuje się w danym punkcie.</p>
-                    <div class="equation">|F| = q v B sin θ</div>
-                    <p>Jeśli znasz siłę, prędkość i kąt między v i B, możesz odczytać wartość pola jako <strong>B = |F| / (q v sin θ)</strong>. Magnetyzm to geometria ruchu.</p>
+                    <p>Magnetyczne <strong>B</strong> to nie tylko liczba. To wektor: kierunek i wielkość. Linie pola układają się w pętle, bo ∇·B = 0, co oznacza brak „początków” i „końców”.</p>
+                    <div class=\"equation\">|F| = q v B sin θ</div>
+                    <p>Gdy zmienisz kąt między <strong>v</strong> i <strong>B</strong>, zmienia się tylko część sin θ. To daje nam konkret: pole magnetyczne wpływa na ruch tylko wtedy, gdy prędkość ma komponent prostopadły do pola.</p>
+                    <p>Z tego wynika prosty wniosek: gdy ładunek porusza się wzdłuż linii pola B, nie czuje siły magnetycznej. Siła pojawia się dopiero tam, gdzie pola kryją pewien „skręt” względem ruchu.</p>
                 </article>
             </div>
         </section>
@@ -81,15 +111,18 @@
                 </div>
                 <article class="article-card" id="ampere">
                     <h3>4. Prąd jako źródło pola</h3>
-                    <p>Ładunek w ruchu tworzy pole magnetyczne. To nie jest dodatek: w elektromagnetyzmie pole magnetyczne i prąd są nierozłączne.</p>
-                    <p>Prawo Ampère'a w uproszczeniu mówi, że prąd generuje pole, które krąży wokół przewodnika.</p>
-                    <div class="equation">∮ B · dl = μ₀ I</div>
+                    <p>Ładunek w ruchu tworzy pole magnetyczne. To nie jest dodatek: w elektromagnetyzmie pole magnetyczne i prąd są nierozłączne. Pojedynczy przewodnik z prądem otoczony jest krążącymi liniami B.</p>
+                    <p>Prawo Ampère'a mówi, że całka po zamkniętej linii pola jest proporcjonalna do prądu, który ta linia otacza.</p>
+                    <div class="equation">∮ B · dl = μ<sub>0</sub> I</div>
+                    <p>Prawo to mówi, że całka wokół zamkniętej ścieżki jest proporcjonalna do prądu otoczonego tą ścieżką. Jeżeli obwód zawiera prąd, pojawia się pole magnetyczne krążące wokół niego.</p>
+                    <p>Przy prostym przewodniku o prądzie <strong>I</strong> linie pola tworzą okręgi wokół przewodnika. Jeśli zwiększasz natężenie prądu, te linie stają się silniejsze i gęściej ułożone wokół przewodnika.</p>
+                    <p>To połączenie prądu z polem magnetycznym jest jednym z fundamentów urządzeń takich jak elektromagnesy, silniki i transformatory.</p>
                 </article>
                 <article class="article-card">
                     <h3>5. Wzór Lorentza i składowe siły</h3>
                     <p>Gdy przesuniesz ładunek w przestrzeni, zmienia się jego relacja do składowych pola. Wartość siły możesz odczytać w prosty sposób, rozkładając kierunki.</p>
-                    <div class="equation">F_x = q (v_y B_z - v_z B_y)</div>
-                    <p>Ten zapis to konkret: każda składowa siły wynika z interakcji dwóch innych składowych prędkości i pola.</p>
+                    <div class="equation">F<sub>x</sub> = q (v<sub>y</sub> B<sub>z</sub> - v<sub>z</sub> B<sub>y</sub>)</div>
+                    <p>Każda składowa siły zależy tylko od pozostałych dwóch składowych prędkości i pola. To znak, że magnetyzm to nie działa w jednym kierunku, lecz w przestrzennej rotacji.</p>
                 </article>
                 <article class="module-card placeholder" id="simulation">
                     <span class="module-tag">Plan</span>
@@ -114,11 +147,31 @@
                     <div class="equation">∇×B = μ₀ J + μ₀ ε₀ ∂E / ∂t</div>
                     <p>Skoro pole magnetyczne nie ma źródeł (∇·B = 0), musi być zamkniętą strukturą. To dlatego linie B tworzą zawsze pętle, a pole elektryczne zaczyna się i kończy w ładunkach.</p>
                 </article>
-                <article class="article-card">
+                <article class="article-card" id="waves">
                     <h3>7. Pełna akcja: fala elektromagnetyczna</h3>
-                    <p>Gdy zmienne pole elektryczne zmienia pole magnetyczne, a zmienne pole magnetyczne zmienia pole elektryczne, powstaje fala. To nie jest dodatek - to konsekwencja równań.</p>
+                    <p>W elektromagnetyzmie para równań <strong>∇×E = -∂B/∂t</strong> i <strong>∇×B = μ₀ J + μ₀ ε₀ ∂E/∂t</strong> mówi, że zmienna elektryczność wywołuje zmienne magnetyzm i odwrotnie. To przekłada się na falę, która sama napędza swoją zmianę.</p>
                     <div class="equation">∂²E / ∂t² = c² ∇²E</div>
-                    <p>Widzisz tu dwa elementy: drugą pochodną w czasie i drugą pochodną w przestrzeni. Jeśli potrafisz je połączyć, masz obraz fali jako biegnącej zmiany pola.</p>
+                    <p>Druga pochodna czasowa mówi, jak szybko zmienia się tempo zmiany pola. Druga pochodna przestrzenna opisuje, jak pole różni się między punktami.</p>
+                    <p>To równanie falowe mówi, że przyspieszenie zmiany pola jest proporcjonalne do krzywizny pola w przestrzeni. W elektromagnetyzmie stała <strong>c</strong> to prędkość światła, a jej wartość pochodzi z magnetyzmu i elektryczności: <strong>c = 1 / √(μ₀ ε₀)</strong>.</p>
+                    <div class="interactive-panel" id="wave-interactive">
+                        <div class="panel-controls">
+                            <div class="panel-control">
+                                <label for="wave-lambda">Długość fali (λ)</label>
+                                <input id="wave-lambda" type="range" min="0.1" max="5" step="0.1" value="1">
+                                <span class="panel-value" id="wave-lambda-output"></span>
+                            </div>
+                            <div class="panel-control">
+                                <label for="wave-frequency">Częstotliwość (f)</label>
+                                <input id="wave-frequency" type="range" min="0.5" max="20" step="0.5" value="3">
+                                <span class="panel-value" id="wave-frequency-output"></span>
+                            </div>
+                        </div>
+                        <div class="panel-result">
+                            <strong>Prędkość fali:</strong>
+                            <span id="wave-speed"></span>
+                        </div>
+                        <p class="panel-note">Wzór <strong>v = λ f</strong> pokazuje, że fala jest ruchomą strukturą zmiany. Druga pochodna przestrzenna wyznacza, jak zmiana w jednym punkcie wpływa na sąsiednie punkty.</p>
+                    </div>
                 </article>
                 <article class="article-card">
                     <h3>8. Kiedy pełny obraz ma sens</h3>
@@ -135,5 +188,6 @@
             <a href="index.html" class="cta-secondary">Powrót</a>
         </div>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -338,12 +338,143 @@ header {
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: transform 0.25s ease, border-color 0.25s ease;
+    min-height: 560px;
+}
+
+body.article-page .article-card {
+    min-height: 70vh;
 }
 
 .article-card:hover,
 .module-card:hover {
     transform: translateY(-4px);
     border-color: rgba(91, 230, 255, 0.25);
+}
+
+.subtopics-dropdown {
+    margin-top: 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    padding: 1rem 1.2rem;
+}
+
+.subtopics-dropdown summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--text);
+    list-style: none;
+    outline: none;
+}
+
+.subtopics-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.subtopic-list {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.subtopic-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 18px;
+}
+
+.subtopic-link {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.subtopic-link:hover {
+    color: var(--primary);
+}
+
+.subtopic-level {
+    color: var(--muted);
+    font-size: 0.92rem;
+    white-space: nowrap;
+}
+
+.interactive-panel {
+    display: grid;
+    gap: 1.4rem;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(91, 230, 255, 0.18);
+    border-radius: 28px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+}
+
+.panel-controls {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.panel-control {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.panel-control label {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.panel-control input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary);
+}
+
+.panel-value {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.panel-result {
+    display: grid;
+    gap: 0.4rem;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.panel-result strong {
+    color: var(--primary);
+}
+
+.panel-note {
+    color: var(--muted);
+}
+
+.math {
+    font-family: 'Courier New', Courier, monospace;
+    color: #dbeafe;
+    display: inline-block;
+    background: rgba(255,255,255,0.05);
+    padding: 0.25rem 0.55rem;
+    border-radius: 12px;
+}
+
+.equation {
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    color: #dbeafe;
 }
 
 .article-card::before,
