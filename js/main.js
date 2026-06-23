@@ -127,6 +127,7 @@ const StronaFiz = {
     setupLorentzPanel() {
         const panel = document.getElementById('lorentz-interactive');
         if (!panel) {
+            console.warn('[StronaFiz] lorentz-interactive panel not found');
             return;
         }
 
@@ -139,6 +140,11 @@ const StronaFiz = {
         const bOutput = document.getElementById('lorentz-b-output');
         const angleOutput = document.getElementById('lorentz-angle-output');
         const resultOutput = document.getElementById('lorentz-force');
+
+        if (!qInput || !vInput || !bInput || !angleInput || !resultOutput) {
+            console.warn('[StronaFiz] Some lorentz inputs not found');
+            return;
+        }
 
         const update = () => {
             const q = Number(qInput.value);
@@ -197,6 +203,7 @@ const StronaFiz = {
     setupWavePanel() {
         const panel = document.getElementById('wave-interactive');
         if (!panel) {
+            console.warn('[StronaFiz] wave-interactive panel not found');
             return;
         }
 
@@ -205,6 +212,11 @@ const StronaFiz = {
         const lambdaOutput = document.getElementById('wave-lambda-output');
         const freqOutput = document.getElementById('wave-frequency-output');
         const speedOutput = document.getElementById('wave-speed');
+
+        if (!lambdaInput || !freqInput || !speedOutput) {
+            console.warn('[StronaFiz] Some wave inputs not found');
+            return;
+        }
 
         const update = () => {
             const wavelength = Number(lambdaInput.value);
