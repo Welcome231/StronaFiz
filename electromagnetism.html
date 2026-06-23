@@ -14,19 +14,29 @@
         <nav class="navbar">
             <div class="container navbar-inner">
                 <a class="logo" href="index.html">StronaFiz</a>
-                <main>
-                    <section class="hero" style="padding: 70px 0 60px;">
-                        <div class="container hero-content">
-                            <small class="eyebrow">Artykuł</small>
-                            <h1>Elektromagnetyzm: od sił do pełnej geometrii pola</h1>
-                            <p>W tym artykule poprowadzimy cię krok po kroku przez ideę pola, siły i równań Maxwella. Każdy blok zawiera krótką intuicję, dowód "skąd to się bierze" i ćwiczenie myślowe, które pomoże ci dojść samodzielnie do formuł — tak, byś nie tylko je pamiętał, lecz rozumiał.</p>
-                            <div class="hero-actions">
-                                <a class="cta-secondary" href="#basics">Rozpocznij od podstaw</a>
-                            </div>
-                        </div>
-                    </section>
+                <nav class="nav-links">
+                    <a href="index.html">Strona główna</a>
+                    <a href="#basics">Podstawy</a>
+                    <a href="#lorentz">Lorentz</a>
+                    <a href="#waves">Fale</a>
+                    <a href="#conclusion">Podsumowanie</a>
+                </nav>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero" style="padding: 70px 0 60px;">
+            <div class="container hero-content">
+                <small class="eyebrow">Artykuł</small>
+                <h1>Elektromagnetyzm: od sił do pełnej geometrii pola</h1>
+                <p>W tym artykule prowadzimy krok po kroku przez ideę pola, siły i równań Maxwella. Każdy blok łączy krótką <span class="highlight">intuicję</span>, prosty dowód i zadanie, które pomoże ci samodzielnie dojść do wniosku.</p>
+                <div class="hero-actions">
+                    <a class="cta-secondary" href="#basics">Rozpocznij od podstaw</a>
+                </div>
+            </div>
+        </section>
 
-                    <section id="basics" class="articles" style="padding-top: 1rem;">
+        <section id="basics" class="articles" style="padding-top: 1rem;">
                         <div class="container">
                             <div class="section-heading">
                                 <small>Podstawy</small>
@@ -42,14 +52,14 @@
                                     </p>
                                     <div class="equation">$\displaystyle \mathbf{E}=\dfrac{\mathbf{F}}{q}$</div>
                                     <p>
-                                        To równanie jest zarazem definicją i narzędziem. Jeżeli znamy rozkład pola, to dla dowolnego ładunku w tym punkcie jego siła to $\mathbf{F}=q\mathbf{E}$. Ten sposób myślenia prowadzi do dwóch praktycznych konsekwencji: superpozycji pól (pole wypadkowe jest sumą pól od każdego źródła) oraz łatwego przenoszenia obliczeń na różne konfiguracje źródeł.
+                                        To równanie jest zarazem definicją i narzędziem. Jeżeli znamy rozkład pola, to dla dowolnego ładunku w tym punkcie jego siła to $\mathbf{F}=q\mathbf{E}$. To wyjaśnia: superpozycja pól oznacza, że pole wypadkowe jest sumą pól od wszystkich źródeł, a obliczenia łatwiej można przenieść na różne konfiguracje.
                                     </p>
-                                    <p>
+                                    <h4>Co z tego wynika?</h4>
                                     <div class="callout">
                                         <strong>Ćwiczenie:</strong> rozważ punktowy ładunek +Q. Wyprowadź pole w odległości $r$ używając symetrii sferycznej i zachowania strumienia elektrycznego przez powierzchnię sferyczną. Zauważysz, że intensywność pola maleje jak $1/r^2$, co wynika z rozkładu strumienia przez powierzchnię rosnącą jak $r^2$.
                                     </div>
                                     <p>
-                                        W tej sekcji zobaczymy też graficzne animacje: linię pola punktowego ładunku oraz superpozycję dla dwóch ładunków przeciwnego znaku (dipol). Zobaczysz, jak zmienia się ułożenie linii i co to oznacza dla trajektorii ładunków próbnych.
+                                        W tej sekcji są graficzne animacje: linia pola punktowego ładunku oraz superpozycja dla dwóch ładunków przeciwnego znaku (dipol). Ruch linii ilustruje, jak zmienia się ułożenie pola oraz co to oznacza dla trajektorii ładunków próbnych.
                                     </p>
                             </article>
                         </div>
@@ -71,6 +81,7 @@
                                 <p>
                                     Iloczyn wektorowy $\mathbf{v}\times\mathbf{B}$ ma dwie cechy, które trzeba zapamiętać: (1) wynikiem jest wektor prostopadły do obu wejściowych wektorów, (2) jego długość to iloczyn długości wektorów i sinus kąta pomiędzy nimi. Z tego wynika wzór na wartość siły: $|F|=|q|\,v\,B\,\sin\theta$, gdzie $\theta$ to kąt między wektorem prędkości a polem magnetycznym.
                                 </p>
+                                <h4>Jak myśleć o tym geometrycznie</h4>
                                 <div class="callout">
                                     <strong>Ćwiczenie:</strong> narysuj trzy osie (X,Y,Z). Niech prędkość będzie wzdłuż osi X, a pole magnetyczne wzdłuż osi Z. Zastosuj regułę prawej dłoni (dla ładunku dodatniego) i znajdziesz, że siła wskazuje w osi Y. Teraz wyobraź sobie ładunek ujemny — kierunek siły odwraca się. Spróbuj przewidzieć, jakie będzie zachowanie cząstki w jednorodnym polu, jeśli jej prędkość początkowo jest prostopadła do $\mathbf{B}$.
                                 </div>
@@ -80,9 +91,9 @@
                                 <p>
                                     Animacja w panelu obrazuje geometryczny sens iloczynu krzyżowego: wektor prędkości, składowa prostopadła do pola i wynikowa siła. Dzięki temu użytkownik może nie tylko zobaczyć wartość siły, ale też zrozumieć, skąd ona pochodzi i jakie konsekwencje ma dla trajektorii.
                                 </p>
-                                <p>
-                                    Ćwiczenie: weź ołówek i narysuj wektor prędkości w poziomie, a wektor pola magnetycznego wychodzący z kartki. Użyj reguły prawej dłoni, aby znaleźć kierunek siły dla dodatniego ładunku. Jeśli ładunek jest ujemny — kierunek się odwraca. To proste ćwiczenie sprawi, że iloczyn wektorowy stanie się intuicyjny.
-                                </p>
+                                <div class="callout">
+                                    <strong>Ćwiczenie:</strong> weź ołówek i narysuj wektor prędkości w poziomie, a wektor pola magnetycznego wychodzący z kartki. Użyj reguły prawej dłoni, aby znaleźć kierunek siły dla dodatniego ładunku. Jeśli ładunek jest ujemny — kierunek się odwraca. To ćwiczenie pomaga oswoić iloczyn wektorowy.
+                                </div>
                                 <div class="interactive-panel" id="lorentz-interactive">
                                     <div class="panel-controls">
                                         <div class="panel-control">
@@ -136,7 +147,9 @@
                                     Ten zapis oznacza, że pole magnetyczne nie ma „źródeł” ani „sanki” — linie pola nie zaczynają się i nie kończą, tworzą zamknięte pętle. To konsekwencja braku obserwowanych monopoli magnetycznych w zwykłej materii. W praktyce oznacza to, że każdy obszar, w którym linie pola wchodzą, jest równoważony przez obszar, w którym z niego wychodzą — to struktura pętli.
                                 </p>
                                 <p>
-                                    Ćwiczenie: narysuj przewodnik pionowy niosący prąd do góry. Narysuj jakościowo linie pola jako okręgi koncentryczne wokół przewodnika. Teraz zwiększ natężenie prądu — zobaczysz, że linie stają się gęstsze (większa gęstość linii to większe pole). To prosta heurystyka, która pomaga wyobrazić siłę w różnych punktach przestrzeni.
+                                    <div class="callout">
+                                        <strong>Ćwiczenie:</strong> narysuj przewodnik pionowy niosący prąd do góry. Narysuj jakościowo linie pola jako okręgi koncentryczne wokół przewodnika. Zwiększ natężenie prądu — linie stają się gęstsze, co odpowiada silniejszemu polu. Ta heurystyka pomaga wyobrazić siłę w różnych punktach przestrzeni.
+                                    </div>
                                 </p>
                                 <p>
                                     Inną praktyczną regułą jest prawo Ampère’a i prawo Biot‑Savarta, które pozwalają obliczać pole wytwarzane przez dany rozkład prądu. Dla długiego, prostego przewodnika o prądzie $I$ wynik to $B\propto I/r$ (dokładnie: $B=\dfrac{\mu_0 I}{2\pi r}$), co znów wynika z symetrii i zachowania strumienia w przekroju kołowym.
@@ -149,7 +162,7 @@
                                     Wzór ten łączy geometrię (kąt między wektorami), wielkości (wartości wektorów) i znak ładunku. Zrozumienie tej zależności pomaga w analizie trajektorii w polach złożonych lub przy projektowaniu eksperymentów, w których sterujemy kierunkiem i wielkością pola.
                                 </p>
                                 <p>
-                                    Na końcu tego bloku pokażemy animację: zmieniając kąt i prędkość zobaczysz, jak zmienia się tor cząstki. Zobaczysz też, dlaczego ruch wzdłuż linii B nie powoduje siły magnetycznej — to po prostu geometria wektorów.
+                                    Na końcu tego bloku animacja pokaże, jak zmienia się tor cząstki przy zmianie kąta i prędkości. To pozwala prześledzić, dlaczego ruch wzdłuż linii B nie powoduje siły magnetycznej — to po prostu geometria wektorów.
                                 </p>
                             </article>
                         </div>
@@ -168,7 +181,7 @@
                                 </p>
                                 <div class="equation">$\displaystyle \oint \mathbf{B}\cdot d\mathbf{l} = \mu_0 I$</div>
                                 <p>
-                                    Intuicyjnie: weź dowolną zamkniętą krzywą — całka po tej krzywej z projekcji wektora $\mathbf{B}$ mówi, ile prądu znajduje się „wewnątrz” tej krzywej. Dla symetrycznych przypadków (np. długi, prosty przewodnik) możemy z tej zasady wyprowadzić praktyczne wzory: $B=\dfrac{\mu_0 I}{2\pi r}$.
+                                    Weź dowolną zamkniętą krzywą — całka po tej krzywej z projekcji wektora $\mathbf{B}$ mówi, ile prądu znajduje się „wewnątrz” tej krzywej. Dla symetrycznych przypadków (np. długi, prosty przewodnik) możemy z tej zasady wyprowadzić praktyczne wzory: $B=\dfrac{\mu_0 I}{2\pi r}$.
                                 </p>
                                 <p>
                                     Biot‑Savart to bardziej ogólne podejście: przyjmując element prądu $d\mathbf{l}$, sumujemy wkłady od wszystkich elementów przewodu, aby otrzymać pole w punkcie obserwacji. Wersja elementarna tego prawa brzmi:
@@ -250,7 +263,7 @@
                                     <div class="equation">$\dfrac{\partial^2 \mathbf{E}}{\partial t^2} = c^2 \nabla^2 \mathbf{E}$</div>
                                 </p>
                                 <p>
-                                    Intuicyjnie: jeśli przyspieszenie zmiany pola w czasie jest proporcjonalne do jego przestrzennej krzywizny, to zaburzenie „przenosi się” dalej — powstaje fala. Stała $c$ pochodzi z parametrów pola i ma wartość prędkości światła.
+                                    Jeśli przyspieszenie zmiany pola w czasie jest proporcjonalne do jego przestrzennej krzywizny, to zaburzenie „przenosi się” dalej — powstaje fala. Stała $c$ pochodzi z parametrów pola i ma wartość prędkości światła.
                                 </p>
                                 <div class="interactive-panel" id="wave-interactive">
                                     <div class="panel-controls">
@@ -288,7 +301,7 @@
                             <article class="article-card">
                                 <h3>Synteza i praktyczne intuicje</h3>
                                 <p>
-                                    Pełny obraz elektromagnetyzmu to narzędzie: pozwala wyjaśnić, zaprojektować i przewidzieć zjawiska od działania prostego przewodnika po propagację fal radiowych. Po przerobieniu powyższych sekcji powinieneś czuć, że równania nie są arbitralnymi symbolami, lecz konsekwencją kilku prostych obserwacji i zasad symetrii: zachowania strumienia, relacji między polem a źródłem oraz sprzężenia czasowego pól.
+                                    Pełny obraz elektromagnetyzmu to narzędzie: pozwala wyjaśnić, zaprojektować i przewidzieć zjawiska od działania prostego przewodnika po propagację fal radiowych. Równania nie są arbitralnymi symbolami — wynikają z kilku prostych obserwacji i zasad symetrii: zachowania strumienia, relacji między polem a źródłem oraz sprzężenia czasowego pól.
                                 </p>
                                 <p>
                                     Jako ćwiczenie końcowe spróbuj samodzielnie przeprowadzić dowód równania falowego: zacznij od równań Faradaya i Maxwella‑Ampère'a (bez źródeł), weź rotację jednego z równań i podstaw drugi, upraszczając, aż otrzymasz operator Laplace'a po prawej stronie. To zadanie świetnie utrwala powiązania między pojęciami.
