@@ -117,6 +117,36 @@ const StronaFiz = {
             // populate with default suggestions
             StronaFiz.updateSearchResults('', resultsContainer);
         }
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navInner = document.querySelector('.navbar-inner');
+        const logo = document.querySelector('.logo');
+        if (navToggle && navLinks && navInner) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navInner.classList.toggle('menu-open', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+                if (logo) {
+                    logo.style.opacity = isOpen ? '0' : '1';
+                    logo.style.pointerEvents = isOpen ? 'none' : 'auto';
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        navInner.classList.remove('menu-open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        if (logo) {
+                            logo.style.opacity = '1';
+                            logo.style.pointerEvents = 'auto';
+                        }
+                    }
+                });
+            });
+        }
     },
 
     setupInteractivePanels() {
