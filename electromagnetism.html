@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elektromagnetyzm | StronaFiz</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container navbar-inner">
+                <a class="logo" href="index.html">StronaFiz</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Start</a></li>
+                    <li><a href="#basics">Podstawy</a></li>
+                    <li><a href="#intermediate">Średnio zaawansowane</a></li>
+                    <li><a href="#full-picture">Pełny obraz</a></li>
+                    <li><a href="#simulation">Symulacja</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 70px 0 60px;">
+            <div class="container hero-content">
+                <small class="eyebrow">Artykuł</small>
+                <h1>Elektromagnetyzm: od sił do pełnej geometrii pola</h1>
+                <p>Uczysz się z pytaniami, nie z nadmiarem tekstu. Zaczniemy od najprostszych reguł, a dalej połączymy je w jeden elegancki system, który pozwoli zrozumieć każde pole.</p>
+                <div class="hero-actions">
+                    <a class="cta-secondary" href="#basics">Rozpocznij od podstaw</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-panel" style="padding-top: 0;">
+            <div class="container">
+                <div class="search-card">
+                    <div>
+                        <h2>Podgląd artykułu</h2>
+                        <p>Ta strona zawiera krótkie, kolejne bloki wiedzy: podstawy, techniczne wnioski i pełny obraz elektromagnetyzmu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="basics" class="articles" style="padding-top: 1rem;">
+            <div class="container">
+                <div class="section-heading">
+                    <small>Podstawy</small>
+                    <h2>Wprowadzenie do siły i pola</h2>
+                </div>
+                <article class="article-card">
+                    <h3>1. Pole jako opis przyczyny</h3>
+                    <p>Gdy odkładamy ładunek w przestrzeń, nie pytamy jeszcze o jego ruch. Pytamy: jakie pole zostaje tam zapisane? Pole to niewidoczny kod, który mówi innym ładunkom, jak będą przyspieszać.</p>
+                    <div class="equation">E = F / q</div>
+                    <p>To wzór na pole elektryczne: 
+                    <strong>E</strong> jest proporcjonalne do <strong>F</strong>, a odwrotnie proporcjonalne do <strong>q</strong>. Jeśli potrafisz odczytać tę zależność, potrafisz zrozumieć każde późniejsze zjawisko w elektromagnetyzmie.</p>
+                </article>
+                <article class="article-card" id="lorentz">
+                    <h3>2. Siła Lorentza w pigułce</h3>
+                    <p>Dla ładunku poruszającego się w polu magnetycznym najważniejsze jest, że droga ładunku zależy od wzajemnej orientacji prędkości i pola.</p>
+                    <div class="equation">F = q (v × B)</div>
+                    <p>Gdy <strong>v</strong> jest równoległe do <strong>B</strong>, krzyżowy iloczyn wynosi zero. Gdy <strong>v</strong> jest prostopadłe, siła jest maksymalna. To mechanizm, dzięki któremu magnety "zginają" ruch ładunków.</p>
+                </article>
+                <article class="article-card" id="field-geometry">
+                    <h3>3. Pole magnetyczne jako orientacja</h3>
+                    <p>Magnetyczne <strong>B</strong> to nie tylko liczba. To wektor: kierunek i wielkość. W praktyce każda linia pola mówi, jak ładunek poczuje się w danym punkcie.</p>
+                    <div class="equation">|F| = q v B sin θ</div>
+                    <p>Jeśli znasz siłę, prędkość i kąt między v i B, możesz odczytać wartość pola jako <strong>B = |F| / (q v sin θ)</strong>. Magnetyzm to geometria ruchu.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="intermediate" class="modules">
+            <div class="container">
+                <div class="section-heading">
+                    <small>Średnio zaawansowane</small>
+                    <h2>Jak prąd i pole tańczą razem</h2>
+                </div>
+                <article class="article-card" id="ampere">
+                    <h3>4. Prąd jako źródło pola</h3>
+                    <p>Ładunek w ruchu tworzy pole magnetyczne. To nie jest dodatek: w elektromagnetyzmie pole magnetyczne i prąd są nierozłączne.</p>
+                    <p>Prawo Ampère'a w uproszczeniu mówi, że prąd generuje pole, które krąży wokół przewodnika.</p>
+                    <div class="equation">∮ B · dl = μ₀ I</div>
+                </article>
+                <article class="article-card">
+                    <h3>5. Wzór Lorentza i składowe siły</h3>
+                    <p>Gdy przesuniesz ładunek w przestrzeni, zmienia się jego relacja do składowych pola. Wartość siły możesz odczytać w prosty sposób, rozkładając kierunki.</p>
+                    <div class="equation">F_x = q (v_y B_z - v_z B_y)</div>
+                    <p>Ten zapis to konkret: każda składowa siły wynika z interakcji dwóch innych składowych prędkości i pola.</p>
+                </article>
+                <article class="module-card placeholder" id="simulation">
+                    <span class="module-tag">Plan</span>
+                    <h3>Symulacja wektorów pola</h3>
+                    <p>W tym miejscu pojawi się interaktywny moduł. Użytkownik będzie mógł przesuwać ładunek, zmieniać prędkość i obserwować zmieniające się wektory B.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="full-picture" class="articles">
+            <div class="container">
+                <div class="section-heading">
+                    <small>Pełny obraz</small>
+                    <h2>Jak Maxwell spina wszystko w jedność</h2>
+                </div>
+                <article class="article-card">
+                    <h3>6. Cztery równania, jeden system</h3>
+                    <p>Każde równanie Maxwella to inny punkt widzenia na to samo pole. Jedno mówi, że ładunki tworzą pole elektryczne, inne że zmienne pole elektryczne tworzy pole magnetyczne.</p>
+                    <div class="equation">∇·E = ρ / ε₀</div>
+                    <div class="equation">∇·B = 0</div>
+                    <div class="equation">∇×E = -∂B / ∂t</div>
+                    <div class="equation">∇×B = μ₀ J + μ₀ ε₀ ∂E / ∂t</div>
+                    <p>Skoro pole magnetyczne nie ma źródeł (∇·B = 0), musi być zamkniętą strukturą. To dlatego linie B tworzą zawsze pętle, a pole elektryczne zaczyna się i kończy w ładunkach.</p>
+                </article>
+                <article class="article-card">
+                    <h3>7. Pełna akcja: fala elektromagnetyczna</h3>
+                    <p>Gdy zmienne pole elektryczne zmienia pole magnetyczne, a zmienne pole magnetyczne zmienia pole elektryczne, powstaje fala. To nie jest dodatek - to konsekwencja równań.</p>
+                    <div class="equation">∂²E / ∂t² = c² ∇²E</div>
+                    <p>Widzisz tu dwa elementy: drugą pochodną w czasie i drugą pochodną w przestrzeni. Jeśli potrafisz je połączyć, masz obraz fali jako biegnącej zmiany pola.</p>
+                </article>
+                <article class="article-card">
+                    <h3>8. Kiedy pełny obraz ma sens</h3>
+                    <p>Pełny obraz elektromagnetyzmu to nie lista faktów. To model, w którym każdą siłę, każdy prąd i każde przyspieszenie da się odczytać jako lokalny stan pola i jego zmian.</p>
+                    <p>Najpierw siła, potem źródła, potem czas. Wtedy pytanie „dlaczego to działa” przestaje być abstrakcją.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>StronaFiz — Elektromagnetyzm</p>
+            <a href="index.html" class="cta-secondary">Powrót</a>
+        </div>
+    </footer>
+</body>
+</html>

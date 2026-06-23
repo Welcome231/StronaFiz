@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StronaFiz - Interaktywny Podręcznik Fizyki</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container navbar-inner">
+                <a class="logo" href="#home">StronaFiz</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="#articles">Artykuły</a></li>
+                    <li><a href="#modules">Moduły</a></li>
+                    <li><a href="#about">O nas</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <small class="eyebrow">Interaktywny podręcznik</small>
+                <h1>Fizyka napisana tak, jak mózg ją najłatwiej przyswaja.</h1>
+                <p>Krótko, przewodnikowo, z ukrytymi objaśnieniami i dynamicznymi demonstracjami. Każdy rozdział buduje pełny obraz, bez przesadnego rozciągania słów.</p>
+                <div class="hero-actions">
+                    <button class="cta-button" onclick="document.getElementById('articles').scrollIntoView({behavior: 'smooth'})">Przejdź do artykułów</button>
+                    <a href="electromagnetism.html" class="cta-secondary">Otwórz elektromagnetyzm</a>
+                </div>
+                <div class="hero-flare"></div>
+            </div>
+        </section>
+
+        <section class="search-panel">
+            <div class="container">
+                <div class="search-card">
+                    <div>
+                        <h2>Znajdź artykuł lub podtemat</h2>
+                        <p>Wpisz słowo kluczowe, aby przejść bezpośrednio do najbardziej relewantnego fragmentu.</p>
+                    </div>
+                    <div class="search-input-group">
+                        <input id="searchInput" type="search" placeholder="Szukaj: elektromagnetyzm, Lorentz, pole, prąd..." autocomplete="off">
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="articles" class="articles">
+            <div class="container">
+                <div class="section-heading">
+                    <small>Podręcznik</small>
+                    <h2>Jedyny artykuł na teraz</h2>
+                </div>
+                <div class="article-grid" id="articleGrid"></div>
+            </div>
+        </section>
+
+        <section id="modules" class="modules">
+            <div class="container">
+                <div class="section-heading">
+                    <small>Symulacje</small>
+                    <h2>Praktyka w formie prototypów</h2>
+                </div>
+                <div class="module-grid">
+                    <article class="module-card placeholder">
+                        <span class="module-tag">Wkrótce</span>
+                        <h3>Eksplorator sił Lorentza</h3>
+                        <p>Przesuń ładunek, obserwuj wektor pola magnetycznego i sprawdź jego wpływ na trajektorię.</p>
+                    </article>
+                    <article class="module-card placeholder">
+                        <span class="module-tag">Wkrótce</span>
+                        <h3>Mapa pola elektromagnetycznego</h3>
+                        <p>Podgląd geometryczny E i B w przestrzeni — w wersji demonstracyjnej.</p>
+                    </article>
+                    <article class="module-card placeholder">
+                        <span class="module-tag">Wkrótce</span>
+                        <h3>Wątek prądowy</h3>
+                        <p>Zobacz, jak prąd w przewodniku generuje kierunek i siłę pola magnetycznego.</p>
+                    </article>
+                    <article class="module-card placeholder">
+                        <span class="module-tag">Wkrótce</span>
+                        <h3>Impuls falowy</h3>
+                        <p>Ilustracja współzależności zmiennego pola elektrycznego i magnetycznego.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-heading">
+                    <small>O projekcie</small>
+                    <h2>Nie tylko symulacje. System wnioskowania.</h2>
+                </div>
+                <p>StronaFiz to wnętrze podręcznika z szybkim dostępem do praktycznych ilustracji. Każda sekcja ma szkielet wiedzy, cel i punkt, który pozwala przejść dalej bez zagubienia.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>&copy; 2026 StronaFiz</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
